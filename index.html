@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>
+    html {
+      background-image: url("bg.png");
+      background-size: 100vw 100vh;
+      z-index: 0;
+      user-select: none;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      text-align: center;
+      z-index: 1;
+    }
+    .container {
+      padding: 0;
+      margin: 0;
+      z-index: 2;
+    }
+    #aqua {
+      padding: 0;
+      margin: 0;
+      height: 100vh;
+      position: relative;
+      top: 0;
+      bottom: 0;
+      transform: scaleX(1);
+    }
+    .sensor {
+      height: 100vh;
+      width: 50vw;
+      position: absolute;
+      z-index: 3;
+    }
+    #left {
+      left: 0;
+    }
+    #right {
+      left: 50vw;
+    }
+  </style>
+  <script language = "JavaScript">
+    var format = ".png";
+    var imageOrder = 1;
+	var imageSet = 6;
+    function switchImg() {
+      if (imageOrder == imageSet) {
+        imageOrder = 0;
+      }
+      imageOrder++;
+      var image = imageOrder + format;
+      document.getElementById("aqua").src = image;
+    }
+    function aquaLeft() {
+      document.getElementById("aqua").style.transform = "scaleX(1)";
+    }
+    function aquaRight() {
+      document.getElementById("aqua").style.transform = "scaleX(-1)";
+    }
+  </script>
+  <body oncontextmenu="return false;">
+    <div
+      class="sensor"
+      id="left"
+      onmouseover="aquaLeft()"
+      ondblclick="switchImg()"
+    ></div>
+    <div
+      class="sensor"
+      id="right"
+      onmouseover="aquaRight()"
+      ondblclick="switchImg()"
+    ></div>
+    <div class="container">
+      <img id="aqua" src="1.png" />
+    </div>
+  </body>
+</html>
